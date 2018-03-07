@@ -1,14 +1,26 @@
-// Select color input
-// Select size input
+// Once document is loaded makeGrid function activates
+// and listens for new submits
+$(document).ready(function(){
+	$('#gridSize').submit(function(evt) {
+	newGrid();
+	makeGrid();
+	evt.preventDefault();
+	});
+	
+});
 
-// When size is submitted by the user, call makeGrid()
+// Resets grid by removing all rows(tr) and colums(td) from
+// pixelCanvas. Children elements removed.
 function newGrid(){
-	$('pixelCanvas')
+	$('pixelCanvas').children().remove();
 }
-function makeGrid(numColumns, numRows) {
-    const columnsRowsTable = '';
-    const numColumns = $('#inputWeight').val();
-    const numRows = $('#inputHeight').val();
+
+/* Creates new grid from values inputed by adding tr and td
+then adding the html into pixelCanvas table */
+function makeGrid() {
+    var columnsRowsTable = '';
+    var numColumns = $('#inputWeight').val();
+    var numRows = $('#inputHeight').val();
     for (x = 1; x <= numColumns; x++) {
 		columnsRowsTable += '<tr>';
 		for (y = 1; y <= numRows; y++) {
@@ -16,6 +28,5 @@ function makeGrid(numColumns, numRows) {
 		}
 		columnsRowsTable += '</tr>';	
 	}
-    //$('columnsRowsTable').appendTo('#pixelCanvas');
-console.log(columnsRowsTable);
+	$('#pixelCanvas').html(columnsRowsTable);
 };
