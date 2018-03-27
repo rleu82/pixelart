@@ -20,6 +20,10 @@ table,
 tr,
 td {
     border: 1px solid black;
+    -webkit-user-select: none; /* Safari 3.1+ */
+    -moz-user-select: none; /* Firefox 2+ */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none; /* Standard syntax */
 }
 
 table {
@@ -33,6 +37,7 @@ tr {
 
 td {
     width: 20px;
+    cursor: pointer;
 }
 
 input[type=number] {
