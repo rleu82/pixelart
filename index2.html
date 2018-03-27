@@ -6,8 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pixel Art Maker</title>
     <link href="styles.css" rel="stylesheet" >
+    <style>
+    .wrapper{
+        display:grid;
+        grid-template-columns: 1fr 2fr;
+        grid-column-gap: 1em;
+        grid-row-gap: 2em;
+    }
+    .wrapper > div{ 
+        background: #eee;
+        padding: 1em;
+    }
+    .wrapper > div:nth-child(odd){
+        background: #ddd;
+    }
+    .headerimage {
+        grid-column:1/4;
+        grid-row: 1/2;
+    }
+    </style>
 </head>
 <body>
-    
+    <div class="wrapper">
+        <div class="headerimage">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe necessitatibus animi ea! Ex sint non impedit recusandae vel tempora neque. Illo fuga nulla libero omnis maiores inventore tempore nisi illum.
+        </div>
+        <div class="gridselect">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur laudantium sunt, optio reprehenderit minima soluta doloremque rerum aliquam! Esse pariatur delectus placeat fuga quasi autem mollitia! Tempore nemo aspernatur sunt maxime qui quisquam possimus vel quidem, soluta optio excepturi dolorem, itaque facere delectus nobis ipsum blanditiis id eos adipisci. Quae maiores aut officiis eveniet tempore cum quidem esse nostrum quisquam illum cupiditate molestias, iusto itaque mollitia natus voluptas saepe, repudiandae quam impedit? Atque sunt iste odio eos asperiores mollitia qui vero nostrum sed omnis vel deserunt cumque illum id sit, quas, distinctio ratione non! Harum eaque minima atque sit quis!
+        </div>
+    </div>
 </body>
 </html>
