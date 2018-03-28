@@ -7,33 +7,62 @@
     <title>Pixel Art Maker</title>
     <link href="styles.css" rel="stylesheet" >
     <style>
-    .wrapper{
-        display:grid;
-        grid-template-columns: 1fr 2fr;
+    .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         grid-column-gap: 1em;
-        grid-row-gap: 2em;
+        grid-row-gap: 1em;
     }
-    .wrapper > div{ 
+    .wrapper > div { 
         background: #eee;
         padding: 1em;
     }
-    .wrapper > div:nth-child(odd){
+    .wrapper > div:nth-child(odd) {
         background: #ddd;
     }
     .headerimage {
-        grid-column:1/4;
-        grid-row: 1/2;
+        grid-column: 1/4;
+        grid-row: auto;
+    }
+    .gridselect {
+        
+    }
+    .gridtable {
+        grid-column: 1/4;
     }
     </style>
 </head>
 <body>
     <div class="wrapper">
+        
         <div class="headerimage">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe necessitatibus animi ea! Ex sint non impedit recusandae vel tempora neque. Illo fuga nulla libero omnis maiores inventore tempore nisi illum.
         </div>
+        
         <div class="gridselect">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur laudantium sunt, optio reprehenderit minima soluta doloremque rerum aliquam! Esse pariatur delectus placeat fuga quasi autem mollitia! Tempore nemo aspernatur sunt maxime qui quisquam possimus vel quidem, soluta optio excepturi dolorem, itaque facere delectus nobis ipsum blanditiis id eos adipisci. Quae maiores aut officiis eveniet tempore cum quidem esse nostrum quisquam illum cupiditate molestias, iusto itaque mollitia natus voluptas saepe, repudiandae quam impedit? Atque sunt iste odio eos asperiores mollitia qui vero nostrum sed omnis vel deserunt cumque illum id sit, quas, distinctio ratione non! Harum eaque minima atque sit quis!
+            <h2>Choose Grid Size</h2>
+            <form id="gridSize">
+                Grid Height:
+                <input type="number" id="inputHeight" name="height" min="1" max="50" value="20">
+                Grid Width:
+                <input type="number" id="inputWeight" name="width" min="1" max="50" value="20">
+                <input type="submit">
+            </form>
+           </div>
+
+        <div class="gridselect">
+            <h2>Pick A Color</h2>
+            <input type="color" id="colorPicker">
         </div>
+
+        <div class="gridtable">
+            <h2>Design Canvas</h2>
+            <table id="pixelCanvas"></table>
+        </div>
+
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="designs.js"></script>
 </body>
 </html>

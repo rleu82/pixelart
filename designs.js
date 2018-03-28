@@ -38,7 +38,6 @@ function makeGrid() {
 	$('#pixelCanvas').html(columnsRowsTable);
 };
 
-
 // Confirm mouseDown = true
 $('#pixelCanvas').delegate('td', 'mousedown', function() {
 	mouseDown = true;
@@ -49,27 +48,27 @@ $('#pixelCanvas').delegate('td', 'mouseup', function() {
 	mouseDown = false;
 });
 
-// Click to paint
-$('#pixelCanvas').delegate('td', 'click', function() {
+// Click to paint / Shift click to erase
+$('#pixelCanvas').delegate('td', 'click', function(e) {
+	if (e.shiftKey) {
+		$(this).css('background', 'none'); // current td 
+	} else {
 	const colorSelected = $('#colorPicker').val(); // chosen color
 	$(this).css('background-color', colorSelected); // current td
-	$('#pixelHtml').val('<table style="border-collapse: collapse; margin: 0 auto; width: 100%;">' + $(pixelCanvas).html() + '</table>'
-);
+	};
 });
 
-// If mouseDown = true paint td cells by moving mouse
-$('#pixelCanvas').delegate('td', 'mouseenter', function() {
+// If mouseDown = true, paint td cells by moving mouse / hold shift to erase
+$('#pixelCanvas').delegate('td', 'mouseenter', function(e) {
 	if (mouseDown) { // if mouseDown = true
+		if (e.shiftKey) {
+			$(this).css('background', 'none'); // current td 
+		} else {
 		const colorSelected = $('#colorPicker').val(); // chosen color
 		$(this).css('background-color', colorSelected); // current td
-	}
+		};
+	};
 });
-
-// Erase td cell with double click
-$('#pixelCanvas').delegate('td', 'dblclick', function() {
-	$(this).css('background-color', 'none'); // current td                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
-});
-
 /*
 $('#pixelHtml').val('<table style="border-collapse: collapse; margin: 0 auto;' + $(pixelCanvas).html() + '</table>'
 ); */
