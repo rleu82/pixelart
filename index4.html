@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pixel Art Maker</title>
+    <link rel="stylesheet" href="https://unpkg.com/huebee@1/dist/huebee.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .canvas-table {
+        background-color: #b0c3d2;
+    }
+    .grid-pr {
+        margin-left: 0;
+    }
+    .huebee__cursor {
+        width: 15px;
+        height: 15px;
+    }
+    .huebee__container {
+        margin-top: 10px;
+    }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark mb-3">
+        <div class="container">
+            <a href="#" class="navbar-brand">Pixel Art Maker</a>
+        </div>
+    </nav>
+    <div class="container">
+
+
+<!-- Start Options Row -->
+    <div class="row mt-5 mb-5">
+        <div class="col-md-4 mb-5">
+            <h5 class="nav-dark">Choose Grid Size</h5>
+            <form id="gridSize">
+                <div class="form-group row grid-pr">
+                    <label class="col-form-label mr-3 mb-1" for="inputWeight">Grid Width:</label>
+                    <input class="form-control" type="number" id="inputWidth" name="width" min="1" max="50" value="25">
+                </div>
+                <div class="form-group row grid-pr">
+                    <label class="col-form-label mr-3" for="inputHeight">Grid Height:</label>
+                    <input class="form-control" type="number" id="inputHeight" name="height" min="1" max="50" value="25">
+                </div>
+                <div class="form-group row grid-pr">
+                    <button class="btn btn-primary" type="submit" name="action" id="submitGrid">Make Grid</button>
+                    <button class="btn-danger btn ml-1" id="clearArt" type="button">Clear Grid</button>
+                </div>
+            </form>  
+        </div> <!-- End Make/Clear Grid  -->
+
+        <div class="col-md-4">
+            <h5 class="nav-dark">Select Your Color</h5>
+            <div class="form-group row grid-pr">
+                <label class="col-form-label mr-3 mb-1" for="colorPicker">Current Color:</label>
+                <input id="colorPicker" value="#FFFFFF" class="color-input form-control" data-huebee='{ "notation": "hex", "saturations": 2, "staticOpen": true }' />
+            </div>
+        </div> <!-- End Make/Clear Grid  -->
+
+        <div class="col-md-4">
+            <h5 class="nav-dark">Choose Grid Size</h5>
+            <form id="gridSize">
+                <div class="form-group row grid-pr">
+                    <label class="col-form-label mr-3 mb-1" for="inputWeight">Grid Width:</label>
+                    <input class="form-control" type="number" id="inputWidth" name="width" min="1" max="50" value="25">
+                </div>
+                <div class="form-group row grid-pr">
+                    <label class="col-form-label mr-3" for="inputHeight">Grid Height:</label>
+                    <input class="form-control" type="number" id="inputHeight" name="height" min="1" max="50" value="25">
+                </div>
+                <div class="form-group row grid-pr">
+                    <button class="btn btn-primary" type="submit" name="action" id="submitGrid">Make Grid</button>
+                    <button class="btn-danger btn ml-1" id="clearArt" type="button">Clear Grid</button>
+                </div>
+            </form>  
+        </div> <!-- End Make/Clear Grid  -->
+    </div> <!-- End Options Row -->
+
+        
+        <div class="row my-5">
+            <div class="col-md-12 m-auto canvas-table">
+                <table class="mt-5 mb-5" id="pixelCanvas"></table>
+            </div>
+        </div>
+
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="designs.js"></script>
+<script src="https://unpkg.com/huebee@1/dist/huebee.pkgd.min.js"></script>
+
+</body>
+</html>

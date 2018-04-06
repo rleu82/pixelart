@@ -11,6 +11,18 @@ $(document).ready(function(){
 
 });
 
+$("#clearArt").click(function() {
+	var yourChoice;
+	var resetOrNot = confirm("Are you sure you want to clear the Canvas?");
+	if (resetOrNot == true) {
+    	newGrid();
+		$('#inputHeight').val('25');
+		$('#inputWidth').val('25');
+		makeGrid();
+	} else {
+		yourChoice = "You pressed Cancel!";
+	}
+});
 
 // Resets grid by removing all rows(tr) and colums(td) from
 // pixelCanvas. Children elements removed.
@@ -18,13 +30,12 @@ function newGrid(){
 	$('pixelCanvas').children().remove();
 }
 
-
 /* Creates new grid from values inputed by adding tr and td,
 then adding the html into pixelCanvas table */
 function makeGrid() {
-    const numColumns = $('#inputWeight').val();
-	const numRows = $('#inputHeight').val();
-	let columnsRowsTable = '';
+    let numColumns = $('#inputHeight').val();
+	let numRows = $('#inputWidth').val();
+	let columnsRowsTable = '<tbody>';
 	
 	for (x = 1; x <= numColumns; x++) {
 		columnsRowsTable += '<tr>';
@@ -32,11 +43,12 @@ function makeGrid() {
 		for (y = 1; y <= numRows; y++) {
 			columnsRowsTable += '<td>&nbsp;</td>';
 		}
-		columnsRowsTable += '</tr>';	
+		columnsRowsTable += '</tr></tbody>';	
 	}
 
 	$('#pixelCanvas').html(columnsRowsTable);
 };
+
 
 // Confirm mouseDown = true
 $('#pixelCanvas').delegate('td', 'mousedown', function() {
@@ -53,7 +65,7 @@ $('#pixelCanvas').delegate('td', 'click', function(e) {
 	if (e.shiftKey) {
 		$(this).css('background', 'none'); // current td 
 	} else {
-	const colorSelected = $('#colorPicker').val(); // chosen color
+	let colorSelected = $('#colorPicker').val(); // chosen color
 	$(this).css('background-color', colorSelected); // current td
 	};
 });
@@ -69,6 +81,11 @@ $('#pixelCanvas').delegate('td', 'mouseenter', function(e) {
 		};
 	};
 });
-/*
-$('#pixelHtml').val('<table style="border-collapse: collapse; margin: 0 auto;' + $(pixelCanvas).html() + '</table>'
-); */
+
+
+// initialize Huebee
+$('.color-input').each( function( i, elem ) {
+	var hueb = new Huebee( elem, {
+	  // options
+	});
+  });
