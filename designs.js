@@ -1,24 +1,31 @@
 // Once document is loaded
 $(document).ready(function(){
-	makeGrid();
-	let mouseDown = false;
-	$('#gridSize').submit(function(event) {
-	let mouseDown = false;
 	newGrid();
 	makeGrid();
+	let mouseDown = false;
 	event.preventDefault();
-	});
+});
 
+
+$('#gridSize').submit(function(event) {
+	var yourChoice;
+	var resetOrNot = confirm("Creating grid will delete your work. Continue?");
+	if (resetOrNot == true) {
+		let mouseDown = false;
+		newGrid();
+		makeGrid();
+		event.preventDefault();
+	} else {
+		yourChoice = "You pressed Cancel!";
+		event.preventDefault();
+	}
 });
 
 $("#clearArt").click(function() {
 	var yourChoice;
 	var resetOrNot = confirm("Are you sure you want to clear the Canvas?");
 	if (resetOrNot == true) {
-    	newGrid();
-		$('#inputHeight').val('25');
-		$('#inputWidth').val('25');
-		makeGrid();
+    	$('td').css('background-color', '#b0c3d2');
 	} else {
 		yourChoice = "You pressed Cancel!";
 	}
@@ -27,7 +34,7 @@ $("#clearArt").click(function() {
 // Resets grid by removing all rows(tr) and colums(td) from
 // pixelCanvas. Children elements removed.
 function newGrid(){
-	$('pixelCanvas').children().remove();
+	$('#pixelCanvas').children().remove();
 }
 
 /* Creates new grid from values inputed by adding tr and td,
@@ -62,22 +69,22 @@ $('#pixelCanvas').delegate('td', 'mouseup', function() {
 
 // Click to paint / Shift click to erase
 $('#pixelCanvas').delegate('td', 'click', function(e) {
+	let colorSelected = $('#colorPicker').val(); // chosen color
 	if (e.shiftKey) {
 		$(this).css('background', 'none'); // current td 
-	} else {
-	let colorSelected = $('#colorPicker').val(); // chosen color
-	$(this).css('background-color', colorSelected); // current td
+	} else { // chosen color
+		$(this).css('background-color', colorSelected); // current td
 	};
 });
 
 // If mouseDown = true, paint td cells by moving mouse / hold shift to erase
 $('#pixelCanvas').delegate('td', 'mouseenter', function(e) {
+	let colorSelected = $('#colorPicker').val(); // chosen color
 	if (mouseDown) { // if mouseDown = true
 		if (e.shiftKey) {
 			$(this).css('background', 'none'); // current td 
 		} else {
-		const colorSelected = $('#colorPicker').val(); // chosen color
-		$(this).css('background-color', colorSelected); // current td
+			$(this).css('background-color', colorSelected); // current td
 		};
 	};
 });
@@ -89,3 +96,6 @@ $('.color-input').each( function( i, elem ) {
 	  // options
 	});
   });
+
+
+  

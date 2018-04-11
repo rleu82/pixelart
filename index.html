@@ -1,31 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pixel Art Maker!</title>
-    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet" >
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pixel Art Maker</title>
+    <link rel="stylesheet" href="https://unpkg.com/huebee@1/dist/huebee.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    .canvas-table {
+        background-color: #b0c3d2;
+    }
+    .grid-pr {
+        margin-left: 0;
+    }
+    .huebee__cursor {
+        width: 15px;
+        height: 15px;
+    }
+    .huebee__container {
+        margin-top: 10px;
+    }
+    .drawingLabel, .painting {
+        display:block;
+    }
+    #directionStart ul {
+        -webkit-padding-start: 0px;
+    }
+    </style>
 </head>
 <body>
-    <h1>Lab: Pixel Art Maker</h1>
+    <nav class="navbar navbar-dark bg-dark mb-3">
+        <div class="container">
+            <a href="#" class="navbar-brand">Pixel Art Maker</a>
+        </div>
+    </nav>
+    <div class="container">
 
-    <h2>Choose Grid Size</h2>
-    <form id="gridSize">
-        Grid Height:
-        <input type="number" id="inputHeight" name="height" min="1" max="50" value="20">
-        Grid Width:
-        <input type="number" id="inputWeight" name="width" min="1" max="50" value="20">
-        <input type="submit">
-        <input type="text" id="pixelHtml" style="height: 100px;">
-    </form>
+    <!-- Start Options Row -->
+    <div class="row mt-5 mb-5">
+        <!-- Start Make/Clear Grid -->
+        <div class="col-md-4">
+            <h5 class="nav-dark">Choose Grid Size</h5>
+            <form id="gridSize">
+                <div class="form-group row grid-pr">
+                    <label class="col-form-label mr-3 mb-1" for="inputWeight">Grid Width:</label>
+                    <input class="form-control" type="number" id="inputWidth" name="width" min="1" max="50" value="25">
+                </div>
+                <div class="form-group row grid-pr">
+                    <label class="col-form-label mr-3" for="inputHeight">Grid Height:</label>
+                    <input class="form-control" type="number" id="inputHeight" name="height" min="1" max="50" value="25">
+                </div>
+                <div class="form-group row grid-pr">
+                    <button class="btn btn-primary" type="submit" name="action" id="submitGrid">Create Grid</button>
+                    <button class="btn btn-danger" type="button" id="clearArt">Clear Grid</button>
+                </div>
+            </form>  
+        </div> 
+        <!-- End Make/Clear Grid  -->
 
-    <h2>Pick A Color</h2>
-    <input type="color" id="colorPicker">
-    
-    <h2>Design Canvas</h2>
-    <table id="pixelCanvas"></table>
+        <!-- Start Select Color -->
+        <div class="col-md-4">
+            <h5 class="nav-dark">Select Your Color</h5>
+            <div class="form-group row grid-pr">
+                <label class="col-form-label mr-3 mb-1" for="colorPicker">Current Color:</label>
+                <input id="colorPicker" value="#FFFFFF" readonly class="color-input form-control" data-huebee='{ "notation": "hex", "saturations": 2, "staticOpen": true }' />
+            </div>
+        </div> 
+        <!-- End Select Color -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- Start Directions and Samples -->
+        <div class="col-md-4">
+            <h5 class="nav-dark">Directions</h5>
+            <div class="form-group row grid-pr" id="directionStart">
+                <ul class="list-unstyled">
+                    <li>Draw:</li>
+                    <li>Click to fill single pixel</li>
+                    <li>Click and hold down to paint</li>
+                    <li>Eraser:</li>
+                    <li>Hold shift and click or click drag</li>
+                </ul>
+            </div> 
+        </div> 
+    </div>
+    <!-- End Options Row -->
 
-    <script src="designs.js"></script>
+        <!-- Painting Canvas -->
+        <div class="row mb-5">
+            <div class="col-md-12 m-auto canvas-table">
+               <table class="mt-5 mb-5" id="pixelCanvas"></table>
+            </div>
+        </div>
+        <!-- End Painting Canvas -->
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="designs.js"></script>
+<script src="https://unpkg.com/huebee@1/dist/huebee.pkgd.min.js"></script>
+
 </body>
 </html>
