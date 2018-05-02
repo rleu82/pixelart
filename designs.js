@@ -6,7 +6,7 @@ $(document).ready(function(){
 	event.preventDefault();
 });
 
-
+// Create Grid function when submitted
 $('#gridSize').submit(function(event) {
 	var yourChoice;
 	var resetOrNot = confirm("Creating grid will delete your work. Continue?");
@@ -21,6 +21,7 @@ $('#gridSize').submit(function(event) {
 	}
 });
 
+// Clear Pixel canvas
 $("#clearArt").click(function() {
 	var yourChoice;
 	var resetOrNot = confirm("Are you sure you want to clear the Canvas?");

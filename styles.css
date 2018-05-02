@@ -2,7 +2,7 @@
     box-sizing: border-box;
   }
 body {
-    background-color: rgb(42, 65, 92);
+    background-color: rgb(42, 65, 92) !important;
 }
 
 h2:first-of-type {
@@ -29,7 +29,7 @@ h3 {
 table,
 tr,
 td {
-    border: 1px dotted rgb(108, 121, 145);
+    border: 1px dotted rgb(255, 255, 255);
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE */
@@ -58,7 +58,22 @@ td {
     width: 20px;
     height: 10px;
 }
-
-/*input[type=number] {
-    width: 5em;
-}*/
+.canvas-table {
+    background-color: #b0c3d2;
+}
+.grid-pr {
+    margin-left: 0;
+}
+.huebee__cursor {
+    width: 15px;
+    height: 15px;
+}
+.huebee__container {
+    margin-top: 10px;
+}
+.drawingLabel, .painting {
+    display:block;
+}
+#directionStart ul {
+    -webkit-padding-start: 0px;
+}
